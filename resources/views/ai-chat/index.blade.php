@@ -1,3 +1,4 @@
+
 @extends('layouts.diagnostic')
 
 @section('title', 'Assistant IA - Création de documents')

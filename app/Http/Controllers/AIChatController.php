@@ -134,11 +134,19 @@ class AIChatController extends Controller
 
             Log::info('Starting AI document generation', [
                 'document_type' => $documentType,
-                'answers' => $answers
+                'answers' => $answers,
+                'session_id' => $sessionId
             ]);
 
+            // Vérifier que le service Groq est disponible
+            if (!$this->groq) {
+                throw new \Exception('Service Groq non initialisé');
+            }
+
             // Appeler l'IA Groq
+            Log::info('Calling Groq API for document generation');
             $result = $this->groq->generateDocument($documentType, $answers);
+            Log::info('Groq API response received', ['success' => $result['success'] ?? false]);
 
             if ($result['success']) {
                 // Sauvegarder le contenu généré

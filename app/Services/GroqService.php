@@ -18,7 +18,7 @@ class GroqService
         }
     }
 
-    public function chat(array $messages, string $model = 'llama3-70b-8192')
+    public function chat(array $messages, string $model = 'llama-3.1-8b-instant')
     {
         try {
             $response = Http::withHeaders([
@@ -32,11 +32,13 @@ class GroqService
             ]);
 
             if (!$response->successful()) {
+                $errorBody = $response->body();
                 Log::error('Erreur Groq API', [
                     'status' => $response->status(),
-                    'body' => $response->body()
+                    'body' => $errorBody,
+                    'headers' => $response->headers()
                 ]);
-                throw new \Exception('Erreur API Groq: ' . $response->status());
+                throw new \Exception('Erreur API Groq: ' . $response->status() . ' - ' . $errorBody);
             }
 
             return $response->json('choices.0.message.content');
