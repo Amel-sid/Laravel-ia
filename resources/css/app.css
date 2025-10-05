@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom utilities in the utilities layer */
+@layer utilities {
+    .text-primary {
+        color: #0066ff;
+    }
+    .bg-primary {
+        background-color: #0066ff;
+    }
+    .border-primary {
+        border-color: #0066ff;
+    }
+    .text-secondary {
+        color: #00cc88;
+    }
+    .bg-secondary {
+        background-color: #00cc88;
+    }
+    .text-dark {
+        color: #1a1a2e;
+    }
+    .bg-dark {
+        background-color: #1a1a2e;
+    }
+}
