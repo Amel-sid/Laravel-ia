@@ -1,61 +1,183 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🛡️ Policify - Plateforme de Cybersécurité pour PME
+
+> **Simplifiez votre mise en conformité cybersécurité avec l'intelligence artificielle**
+
+![Laravel](https://img.shields.io/badge/Laravel-11.x-red?style=flat&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.2+-blue?style=flat&logo=php)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-blue?style=flat&logo=tailwindcss)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat)
+
+## 📋 Description
+
+**Policify** est une plateforme web innovante conçue spécialement pour les PME françaises qui souhaitent **sécuriser leur infrastructure informatique** sans complexité technique.
+
+### 🎯 Objectifs
+- **Démocratiser la cybersécurité** pour les petites et moyennes entreprises
+- **Automatiser la création de documents** de sécurité conformes (PSSI, chartes, procédures)
+- **Fournir un diagnostic rapide** du niveau de sécurité IT
+- **Accompagner la mise en conformité** RGPD et réglementations sectorielles
+
+### ⭐ Fonctionnalités principales
+
+#### 🔍 **Diagnostic de Sécurité Intelligent**
+- Évaluation automatisée en 5 minutes
+- Scoring détaillé par domaine de sécurité
+- Recommandations personnalisées
+- Suivi des améliorations dans le temps
+
+#### 🤖 **Génération de Documents par IA**
+- **PSSI** (Politique de Sécurité des Systèmes d'Information)
+- **Chartes utilisateur** personnalisées
+- **Procédures de sauvegarde** adaptées
+- Contenu adapté au secteur et à la taille de l'entreprise
+
+#### 📊 **Dashboard de Pilotage**
+- Vue d'ensemble du niveau de sécurité
+- Alertes et rappels automatiques
+- Historique des évaluations
+- Plans d'action prioritaires
+
+#### 🎓 **Centre de Formation**
+- Modules d'e-learning interactifs
+- Sensibilisation aux risques cyber
+- Bonnes pratiques sectorielles
+- Certifications de formation
+
+## 🚀 Technologies utilisées
+
+### Backend
+- **Laravel 11** - Framework PHP moderne et sécurisé
+- **PHP 8.2+** - Langage de programmation
+- **MySQL** - Base de données relationnelle
+- **Groq AI** - Intelligence artificielle pour la génération de contenu
+
+### Frontend
+- **Blade Templates** - Moteur de templates Laravel
+- **TailwindCSS** - Framework CSS utilitaire
+- **Alpine.js** - Framework JavaScript léger
+- **Chart.js** - Graphiques et visualisations
+
+### Sécurité & Conformité
+- **Chiffrement des données sensibles**
+- **Authentification sécurisée**
+- **Conformité RGPD** native
+- **Journalisation des accès**
+
+## 🛠️ Installation
+
+### Prérequis
+- PHP 8.2 ou supérieur
+- Composer
+- Node.js & NPM
+- MySQL 8.0+
+
+### Étapes d'installation
+
+```bash
+# Cloner le repository
+git clone https://github.com/votre-username/policify.git
+cd policify
+
+# Installer les dépendances PHP
+composer install
+
+# Installer les dépendances JavaScript
+npm install && npm run build
+
+# Configurer l'environnement
+cp .env.example .env
+php artisan key:generate
+
+# Configurer la base de données dans .env
+# DB_DATABASE=policify
+# DB_USERNAME=votre_user
+# DB_PASSWORD=votre_password
+
+# Configurer l'API Groq dans .env
+# GROQ_API_KEY=votre_api_key
+
+# Exécuter les migrations
+php artisan migrate --seed
+
+# Démarrer le serveur de développement
+php artisan serve
+```
+
+### Configuration requise
+
+```env
+# Base de données
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=policify
+DB_USERNAME=root
+DB_PASSWORD=
+
+# API Intelligence Artificielle
+GROQ_API_KEY=gsk_your_groq_api_key
+
+# Mail (optionnel)
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+```
+
+## 🎯 Public cible
+
+### 👥 Entreprises visées
+- **PME de 10 à 500 employés**
+- **Tous secteurs d'activité** (priorité : services, commerce, santé)
+- **Dirigeants et responsables IT** non-experts en cybersécurité
+- **Entreprises soumises au RGPD** et réglementations sectorielles
+
+### 💼 Cas d'usage typiques
+- Startup technologique souhaitant sécuriser sa croissance
+- Cabinet médical devant protéger les données patients
+- Commerce en ligne nécessitant la conformité RGPD
+- Bureau d'études gérant des données sensibles clients
+
+## 📈 Roadmap
+
+### Version 1.0 (Actuelle)
+- ✅ Diagnostic de sécurité automatisé
+- ✅ Génération de PSSI, chartes et procédures
+- ✅ Dashboard de pilotage
+- ✅ Interface utilisateur intuitive
+
+### Version 1.1 (Prochaine)
+- 🔄 Module de formation e-learning
+- 🔄 Notifications automatiques
+- 🔄 Export PDF des documents
+- 🔄 API pour intégrations tierces
+
+### Version 2.0 (Futur)
+- 🎯 Surveillance continue des menaces
+- 🎯 Intégration avec outils IT existants
+- 🎯 Marketplace de solutions cybersécurité
+- 🎯 Module de gestion des incidents
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Pour contribuer :
+
+1. Fork le projet
+2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/nouvelle-fonctionnalite`)
+3. Committez vos changements (`git commit -m 'Ajout d'une nouvelle fonctionnalité'`)
+4. Push vers la branche (`git push origin feature/nouvelle-fonctionnalite`)
+5. Ouvrez une Pull Request
+
+## 📝 Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## 📞 Contact & Support
+
+- **Email** : contact@policify.fr
+- **Documentation** : [docs.policify.fr](https://docs.policify.fr)
+- **Support** : [support.policify.fr](https://support.policify.fr)
+
+---
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<strong>🛡️ Sécurisez votre entreprise en toute simplicité avec Policify</strong>
 </p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
