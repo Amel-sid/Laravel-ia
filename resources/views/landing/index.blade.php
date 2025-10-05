@@ -418,7 +418,7 @@
                         </button>
                     </div>
                     
-                    <form action="{{ route('auth.login.custom') }}" method="POST" class="space-y-4">
+                    <form action="{{ route('login') }}" method="POST" class="space-y-4">
                         @csrf
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
@@ -474,7 +474,7 @@
                         </button>
                     </div>
                     
-                    <form action="{{ route('auth.register') }}" method="POST" class="space-y-4">
+                    <form action="{{ route('register') }}" method="POST" class="space-y-4">
                         @csrf
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom complet</label>
