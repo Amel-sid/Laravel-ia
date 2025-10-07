@@ -15,7 +15,8 @@ return new class extends Migration
             // 1. Permettre user_id nullable (pour les documents anonymes)
             $table->foreignId('user_id')->nullable()->change();
 
-            // 2. Ajouter le statut 'anonymous' aux valeurs possibles
+            // 2. Supprimer l'index existant puis la colonne status
+            $table->dropIndex(['status']); // Supprimer l'index avant de dropper la colonne
             $table->dropColumn('status');
         });
 
