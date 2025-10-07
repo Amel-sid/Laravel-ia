@@ -9,3 +9,18 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+
+# Correction détection langage GitHub
+*.php linguist-language=PHP
+*.blade.php linguist-language=PHP
+
+# Exclure les dossiers vendored du calcul
+vendor/* linguist-vendored
+node_modules/* linguist-vendored
+public/build/* linguist-generated
+storage/* linguist-generated
+
+# Ignorer les fichiers temporaires Python
+get-pip.py linguist-vendored
+*.pyc linguist-vendored
+compose.yaml.bak linguist-vendored
