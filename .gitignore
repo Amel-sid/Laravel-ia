@@ -22,3 +22,25 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Fichiers sensibles
+*.pem
+*.key
+*.p12
+*.pfx
+.env.local
+.env.*.local
+secrets/
+credentials/
+
+# Docker secrets (si utilisés)
+.docker-secrets/
+docker-compose.override.yml
+
+# IDE et outils
+.vscode/settings.json
+.idea/workspace.xml
+.idea/tasks.xml
+
+# Logs de sécurité
+/storage/logs/security.log
