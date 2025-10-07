@@ -1,0 +1,80 @@
+services:
+  # Base de données MySQL
+  mysql:
+    image: mysql:5.7
+    container_name: policify_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: policify
+      MYSQL_USER: policify_user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_HOST: '%'   # ← IMPORTANT
+
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - policify_network
+
+  # Application Laravel
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: policify_app
+    restart: unless-stopped
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - policify_network
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=policify
+      - DB_USERNAME=policify_user
+      - DB_PASSWORD=password
+
+  # Serveur web Nginx
+  nginx:
+    image: nginx:alpine
+    container_name: policify_nginx
+    restart: unless-stopped
+    ports:
+      - "8083:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - policify_network
+
+  # phpMyAdmin pour gérer MySQL
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: policify_phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql
+    networks:
+      - policify_network
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  policify_network:
+    driver: bridge
