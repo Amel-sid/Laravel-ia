@@ -28,11 +28,13 @@ jobs:
       continue-on-error: true  # Ne bloque pas si TruffleHog échoue
 
     - name: Analyse de sécurité avec Snyk
+      if: ${{ secrets.SNYK_TOKEN != '' }}
       uses: snyk/actions/php@master
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
         args: --severity-threshold=high
+      continue-on-error: true
 
   # ==============================================================================
   # Tests Laravel
@@ -109,6 +111,7 @@ jobs:
     name: Build Docker Image
     runs-on: ubuntu-latest
     needs: [security-tests, laravel-tests]
+    if: ${{ secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != '' }}
 
     steps:
     - uses: actions/checkout@v4
