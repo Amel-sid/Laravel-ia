@@ -13,7 +13,8 @@ use App\Http\Controllers\{
 /**
  * Calcule le score de maturité sécurité d'un utilisateur
  */
-function calculateSecurityMaturityScore($user) {
+if (!function_exists('calculateSecurityMaturityScore')) {
+    function calculateSecurityMaturityScore($user) {
     $score = 20; // Score de base
     $level = 'Débutant';
     
@@ -44,12 +45,14 @@ function calculateSecurityMaturityScore($user) {
         'level' => $level,
         'color' => $score >= 80 ? 'green' : ($score >= 60 ? 'blue' : ($score >= 40 ? 'yellow' : 'red'))
     ];
+    }
 }
 
 /**
  * Calcule le statut de conformité d'un utilisateur
  */
-function calculateComplianceStatus($user) {
+if (!function_exists('calculateComplianceStatus')) {
+    function calculateComplianceStatus($user) {
     $status = 'Non conforme';
     $percentage = 0;
     $color = 'red';
@@ -105,12 +108,14 @@ function calculateComplianceStatus($user) {
         'requirements' => $requirements,
         'missing_count' => count($requiredDocs) - count($completedRequirements)
     ];
+    }
 }
 
 /**
  * Calcule les alertes et actions urgentes pour un utilisateur
  */
-function calculateUrgentAlerts($user) {
+if (!function_exists('calculateUrgentAlerts')) {
+    function calculateUrgentAlerts($user) {
     $alerts = [];
     $urgentActions = [];
     
@@ -221,6 +226,7 @@ function calculateUrgentAlerts($user) {
         'has_critical' => collect($alerts)->where('type', 'critical')->count() > 0,
         'total_count' => count($alerts) + count($urgentActions)
     ];
+    }
 }
 
 /*
