@@ -3,6 +3,10 @@
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
+         executionOrder="random"
+         failOnWarning="true"
+         failOnRisky="true"
+         stopOnFailure="false"
 >
     <testsuites>
         <testsuite name="Unit">
@@ -12,20 +16,52 @@
             <directory>tests/Feature</directory>
         </testsuite>
     </testsuites>
+
+    <!-- Code Coverage Configuration -->
+    <coverage>
+        <report>
+            <clover outputFile="coverage.xml"/>
+            <html outputDirectory="coverage-html"/>
+            <text outputFile="php://stdout" showUncoveredFiles="false"/>
+        </report>
+    </coverage>
+
     <source>
         <include>
             <directory>app</directory>
         </include>
+        <exclude>
+            <directory>app/Console</directory>
+            <directory>app/Exceptions</directory>
+            <file>app/Http/Kernel.php</file>
+        </exclude>
     </source>
+
     <php>
+        <!-- Application Configuration -->
         <env name="APP_ENV" value="testing"/>
+        <env name="APP_KEY" value="base64:TEST_KEY_FOR_PHPUNIT_TESTING_ONLY"/>
+        <env name="APP_DEBUG" value="true"/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+
+        <!-- Security -->
         <env name="BCRYPT_ROUNDS" value="4"/>
+
+        <!-- Cache & Session -->
         <env name="CACHE_STORE" value="array"/>
-        <env name="DB_DATABASE" value="testing"/>
-        <env name="MAIL_MAILER" value="array"/>
-        <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
+
+        <!-- Database -->
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+
+        <!-- Mail -->
+        <env name="MAIL_MAILER" value="array"/>
+
+        <!-- Queue -->
+        <env name="QUEUE_CONNECTION" value="sync"/>
+
+        <!-- Monitoring -->
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="NIGHTWATCH_ENABLED" value="false"/>
